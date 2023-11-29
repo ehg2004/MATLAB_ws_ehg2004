@@ -1,0 +1,22 @@
+function [h] = windowSincLP(M,FC,w)
+%UNTITLED Summary of this function goes here
+%   Detailed explanation goes here
+sum=0;
+h=zeros(1,M);
+    for i=1 : M
+        if ((i-1-M/2) == 0)
+           h(i)= 2*pi*FC;
+        else
+           h(i)=sin(2*pi*FC*(i-M/2-1))/(i-M/2-1) ;
+        end
+        sum=sum+h(i);
+        if(w==1)
+         h(i) = h(i)* (0.54 - 0.46*cos(2*pi*(i-1)/M) );
+        end
+        if(w==)
+         h(i) = h(i)* (0.54 - 0.46*cos(2*pi*(i-1)/M) );
+        end
+    end
+    h=h/sum;
+end
+

@@ -1,0 +1,15 @@
+function [Y] = myDFT(X)
+    N=size(X,2);
+    %%N = 512 ; 
+    %%XX = zeros(1,N);
+    XX=X;
+    REX = zeros(1,floor(N/2)+1);
+    IMX = zeros(1,floor(N/2)+1);
+    for i=1:N/2+1
+        for j=1:N
+            REX(i)=REX(i)+XX(j)*cos(2*pi*(i-1)*(j-1)/N);
+            IMX(i)=IMX(i)-XX(j)*sin(2*pi*(i-1)*(j-1)/N);
+        end
+    end
+    Y=complex(REX,IMX);
+    end
