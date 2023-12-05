@@ -3,12 +3,9 @@ function [y] = recSinglePoleHP(x,fc)
 %   Detailed explanation goes here
 y=zeros(1,length(x));
 r=exp(-2*pi*fc);
-    y(1)=(1r)*x(1);
-    y(2)=
+    y(1)=(1+r)/2*x(1);
 for i=2:length(x) 
-    y(i)=(1-r)*x(i)-(1+r)/2*x(i-1)+(r)*y(i-1);
+    y(i)=(1+r)/2*x(i)-(1+r)/2*x(i-1)+(r)*y(i-1);
 end
-outputArg1 = inputArg1;
-outputArg2 = inputArg2;
 end
 
