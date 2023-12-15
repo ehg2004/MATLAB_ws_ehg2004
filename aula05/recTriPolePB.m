@@ -14,5 +14,6 @@ y(2)=a0*x(2)+a1*x(2-1)+b1*y(2-1);
 for i=3:length(x)
     y(i)=a0*x(i)+a1*x(i-1)+a2*x(i-2)+b1*y(i-1)+b2*y(i-2);
 end
+
 end
 

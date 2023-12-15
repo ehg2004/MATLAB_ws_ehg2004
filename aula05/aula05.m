@@ -54,7 +54,7 @@ plot(wHP);
 subplot(3,1,3);
 plot(abs(fft(wHP)));
 
-dSB=recTriPoleSB(d,0.01,0.25);
+dSB=recTriPoleSB(recTriPoleSB(recTriPoleSB(d,0.03,0.2),0.03,0.2),0.03,0.2);
  figure(5)
  subplot(2,2,1);
  plot(dSB);
@@ -69,7 +69,9 @@ dSB=recTriPoleSB(d,0.01,0.25);
  plot(20*log(abs(fft(dSB))));
  title('SB Atenuation');
 
-dPB=recTriPolePB(d,0.01,0.25);
+% dPB=recTriPolePB(d,0.01,0.25);
+
+dPB=recTriPolePB(recTriPolePB(d,0.03,0.2),0.03,0.2);
 
  figure(6)
  subplot(2,2,1);
@@ -87,10 +89,13 @@ dPB=recTriPolePB(d,0.01,0.25);
  
 
  x=senoide(1,-1,50,1000)+senoide(1,-1,200,1000) + senoide(1,-1,350,1000);
- 
- xSB=recTriPoleSB(x,0.01,0.2);
- xPB=recTriPolePB(x,0.01,0.2);
+ % 
+ % xSB=recTriPoleSB(x,0.03,0.2);
+ % xPB=recTriPolePB(x,0.003,0.2);
 
+ xSB=recTriPoleSB(recTriPoleSB(recTriPoleSB(x,0.03,0.2),0.03,0.2),0.03,0.2);
+ xPB=recTriPolePB(recTriPolePB(x,0.03,0.2),0.03,0.2);
+ 
  figure(7)
  subplot(2,3,1);
  plot(x);
@@ -108,6 +113,26 @@ dPB=recTriPolePB(d,0.01,0.25);
  plot(xPB);
  title('PBF');
  subplot(2,3,6);
+ plot(abs(fft(xPB)));
+ title('PB FFT');
+
+  figure(9)
+ subplot(3,2,1);
+ plot(x);
+ title('Original signal')
+ subplot(3,2,2);
+ plot(abs(fft(x)));
+ title('FFT')
+ subplot(3,2,3);
+ plot(xSB);
+ title('SBF');
+ subplot(3,2,4);
+ plot(abs(fft(xSB)));
+ title('SBF FFT');
+ subplot(3,2,5);
+ plot(xPB);
+ title('PBF');
+ subplot(3,2,6);
  plot(abs(fft(xPB)));
  title('PB FFT');
 

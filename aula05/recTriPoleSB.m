@@ -1,6 +1,5 @@
 function [y] = recTriPoleSB(x,BW,FC)
-%RECTRIPOLESB Summary of this function goes here
-%   Detailed explanation goes here
+
 R=1-3*BW;
 k=(1-2*R*cos(2*pi*FC)+R*R)/(2-2*cos(2*pi*FC));
 a0=k;
